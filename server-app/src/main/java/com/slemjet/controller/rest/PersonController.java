@@ -17,13 +17,28 @@ public class PersonController {
         this.personService = personService;
     }
 
+    @GetMapping
+    public List<Person> listPersons() {
+        return personService.getAll();
+    }
+
     @PostMapping()
     public Person add(@RequestBody Person person) {
         return personService.add(person);
     }
 
-    @GetMapping
-    public List<Person> listPersons() {
-        return personService.listPersons();
+    @PutMapping()
+    public Person update(@RequestBody Person person) {
+        return personService.update(person);
+    }
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable Long id) {
+        personService.delete(id);
+    }
+
+    @DeleteMapping()
+    public void delete(@RequestBody List<Long> ids) {
+        personService.delete(ids);
     }
 }

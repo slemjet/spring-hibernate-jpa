@@ -1,14 +1,14 @@
-import {Component} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../service/user-service.service';
 import {User} from '../model/user';
 
 @Component({
-  selector: 'app-user-form',
-  templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.css']
+  selector: 'app-add-user-form',
+  templateUrl: './user-edit-form.component.html',
+  styleUrls: ['./user-edit-form.component.css']
 })
-export class UserFormComponent {
+export class UserEditFormComponent implements OnInit{
 
   user: User;
 
@@ -16,14 +16,17 @@ export class UserFormComponent {
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService) {
-    this.user = new User();
   }
 
   onSubmit() {
-    this.userService.add(this.user).subscribe(result => this.gotoUserList());
+    this.userService.update(this.user).subscribe(result => this.gotoUserList());
   }
 
   gotoUserList() {
     this.router.navigate(['/users']);
+  }
+
+  ngOnInit(): void {
+    this.user = this.userService.user;
   }
 }

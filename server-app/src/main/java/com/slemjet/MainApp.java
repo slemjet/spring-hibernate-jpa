@@ -26,7 +26,7 @@ public class MainApp {
         personService.add(new Person("User4", "User4", "us4@example.com"));
 
         // Get Persons
-        List<Person> persons = personService.listPersons();
+        List<Person> persons = personService.getAll();
         for (Person person : persons)
             log.info("Person = " + person);
 

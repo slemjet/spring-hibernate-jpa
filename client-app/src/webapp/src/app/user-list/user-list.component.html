@@ -2,11 +2,13 @@
   <div class="card-body">
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
+
       <tr>
         <th scope="col">#</th>
         <th scope="col">First Name</th>
         <th scope="col">Last Name</th>
         <th scope="col">Email</th>
+        <th scope="col">Options</th>
       </tr>
       </thead>
       <tbody>
@@ -14,7 +16,13 @@
         <td>{{ user.id }}</td>
         <td>{{ user.firstName }}</td>
         <td>{{ user.lastName }}</td>
-        <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+        <td>{{ user.email }}</td>
+        <td>
+          <div class="btn-toolbar">
+            <button type="button" class="btn btn-outline-info mr-2" (click)="editSelected(user)" >Edit</button>
+            <button type="button" class="btn btn-outline-danger" (click)="deleteSelected(user)">Delete</button>
+          </div>
+        </td>
       </tr>
       </tbody>
     </table>

@@ -2,9 +2,9 @@ package com.slemjet.service;
 
 import com.slemjet.dao.PersonDao;
 import com.slemjet.entity.Person;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
@@ -16,16 +16,33 @@ public class PersonServiceImpl implements PersonService {
         this.userDao = userDao;
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public List<Person> getAll() {
+        return userDao.getAll();
+    }
+
     @Transactional
     @Override
     public Person add(Person person) {
         return userDao.add(person);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     @Override
-    public List<Person> listPersons() {
-        return userDao.listPersons();
+    public Person update(Person person) {
+        return userDao.update(person);
     }
 
+    @Transactional
+    @Override
+    public void delete(Long id) {
+        userDao.delete(id);
+    }
+
+    @Transactional
+    @Override
+    public void delete(List<Long> ids) {
+        userDao.delete(ids);
+    }
 }
