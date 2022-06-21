@@ -16,7 +16,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <mysql-connector.version>8.0.17</mysql-connector.version>
+        <mysql-connector.version>8.0.28</mysql-connector.version>
         <hibernate.version>5.4.4.Final</hibernate.version>
         <commons-dbcp.version>2.7.0</commons-dbcp.version>
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
